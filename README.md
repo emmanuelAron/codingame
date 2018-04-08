@@ -1,4 +1,5 @@
 
+ [******   ENONCE COPIé DU SITE CODINGAME.COM     **********]
  Objectif
 Vous avez un tableau de width * height cases dans lequel chaque case représente l'état d'une cellule : vivante '1' ou morte '0'. Chaque cellule interagit avec ses huit voisins (horizontalement, verticalement et sur les diagonales) suivant ces quatre règles.
 
