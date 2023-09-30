@@ -1,6 +1,5 @@
 import java.util.*;
-import java.io.*;
-import java.math.*;
+import java.util.stream.Collectors;
 
 class Solution {
 
@@ -12,18 +11,38 @@ class Solution {
         }
         return somme;
     }
+
+    private static List<Integer> generateSequence(int river) {
+        List<Integer> nbs = new ArrayList<>();
+        int i=0;
+        nbs.add(river);
+        while(i < 3000){
+            river = river + calcSomme(river);
+            nbs.add(river);
+            i++;
+        }
+        return nbs;
+    }
+
+     private static <T> Set<T> findCommonElements(List<T> first, List<T> second) {
+        return first.stream().filter(second::contains).collect(Collectors.toSet());
+    }
+
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
         long r1 = in.nextLong();
         long r2 = in.nextLong();
-        int s1 = 0;
-        int s2 = 0;
-        System.err.println(r1);
-        System.err.println(r2);
-        s1 = calcSomme(r1);
-        s2 = calcSomme(r2);
-        System.err.println("somme de r1: "+s1);
-        System.err.println("somme de r2: "+s2);
-     
+
+        List<Integer> nbs = generateSequence((int)r1);
+        List<Integer> nbs2 = generateSequence((int)r2);
+
+       // Collections.sort(nbs);
+       // Collections.sort(nbs2);
+
+        System.err.println(nbs);
+        System.err.println(nbs2);
+
+         Set<Integer> common = findCommonElements(nbs, nbs2);
+        System.out.println(Collections.min(common));
     }
 }
